@@ -6,7 +6,7 @@ import configs from "config";
 import { getState } from "store";
 import imageFormatter from "utils/imageFormatter";
 
-const FileUpload = ({ form, field, label, multiple = false, style }) => {
+const FileUpload = ({ form, field, label, multiple = false }) => {
     const [loading, setLoading] = useState(false);
     const [fileList, setFileList] = useState(imageFormatter(field.value));
 

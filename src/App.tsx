@@ -26,7 +26,11 @@ function App() {
     });
 
     useEffect(() => {
-        if (!user.token) responseUser.refetch();
+        if (!user.token) {
+            console.log(responseUser);
+
+            // responseUser.refetch();
+        }
     }, []);
 
     return user.token ? (

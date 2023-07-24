@@ -2,7 +2,7 @@ import { DrawerModal } from "components";
 import Containers from "containers";
 import FormFields from "./FormFields";
 import { message } from "antd";
-// import { isArray } from "lodash";
+import { isArray } from "lodash";
 
 export default function CreateModal({ modal, setModal }) {
     const { open } = modal;
@@ -26,10 +26,6 @@ export default function CreateModal({ modal, setModal }) {
                 }}
                 fields={[
                     {
-                        name: "menu_id",
-                        value: 2,
-                    },
-                    {
                         name: "title",
                         validationType: "object",
                         value: {
@@ -46,32 +42,69 @@ export default function CreateModal({ modal, setModal }) {
                             }),
                     },
                     {
-                        name: "menu_item_parent_id",
+                        name: "description",
+                        validationType: "object",
+                        value: {
+                            uz: "",
+                            ru: "",
+                            en: "",
+                        },
+                        validations: [{ type: "required" }],
+                        lazy: (_, yup) =>
+                            yup.object().shape({
+                                uz: yup.string().required("Обязательное поле"),
+                                ru: yup.string().required("Обязательное поле"),
+                                en: yup.string().required("Обязательное поле"),
+                            }),
+                    },
+                    {
+                        name: "anons",
+                        validationType: "object",
+                        value: {
+                            uz: "",
+                            ru: "",
+                            en: "",
+                        },
+                        validations: [{ type: "required" }],
+                        lazy: (_, yup) =>
+                            yup.object().shape({
+                                uz: yup.string().required("Обязательное поле"),
+                                ru: yup.string().required("Обязательное поле"),
+                                en: yup.string().required("Обязательное поле"),
+                            }),
+                    },
+                    {
+                        name: "category_id",
                         validationType: "object",
                         onSubmitValue: (value) => value.value || null,
                     },
                     {
-                        name: "sort",
+                        name: "top",
                         validationType: "string",
                         validations: [{ type: "required" }],
                         onSubmitValue: (value) => value || null,
                     },
                     {
-                        name: "url",
+                        name: "slug",
                         validationType: "string",
                         validations: [{ type: "required" }],
                         onSubmitValue: (value) => value || null,
                     },
-                    // {
-                    //     name: "icon_id",
-                    //     validationType: "array",
-                    //     validations: [{ type: "required" }],
-                    //     onSubmitValue: (value) => {
-                    //         return isArray(value) && value.length
-                    //             ? value[0].id
-                    //             : null;
-                    //     },
-                    // },
+                    {
+                        name: "published_at",
+                        validationType: "string",
+                        validations: [{ type: "required" }],
+                        onSubmitValue: (value) => value || null,
+                    },
+                    {
+                        name: "files",
+                        validationType: "array",
+                        onSubmitValue: (value) => {
+                            return isArray(value) && value.length
+                                ? value[0].id
+                                : null;
+                        },
+                    },
                 ]}
             >
                 {(props) => <FormFields {...props} setModal={setModal} />}

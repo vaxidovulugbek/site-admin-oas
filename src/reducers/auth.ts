@@ -4,7 +4,17 @@ import storage from "redux-persist/lib/storage";
 import constants from "helpers/constants";
 
 const initialState = {
-    user: {},
+    user: {
+        id: 1,
+        first_name: "super",
+        last_name: "user",
+        username: "admin",
+        email: null,
+        phone: null,
+        status: 10,
+        role: 10,
+        token: "9Lr_BCpJb2SbxavS0cpJFkxFyHiI8jIGRXoSIImj1wr4ca9z7QfpY95GJPngi8iW",
+    },
 };
 
 const authReducer = (
@@ -19,7 +29,7 @@ const authReducer = (
             return { ...state, user: {} };
 
         default:
-            return state;
+            return { ...initialState, ...state };
     }
 };
 

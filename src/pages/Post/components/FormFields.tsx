@@ -7,28 +7,30 @@ export default function FormFields({
     isUpdate = false,
     setModal,
     isSubmitting,
+    values,
 }) {
+    console.log(values);
+
     return (
         <Row gutter={[16, 16]}>
             <Col span={8}>
                 <Field
-                    label="Логотип"
+                    label="Основное изображение"
                     name="photo"
                     component={Fields.FileUpload}
                 />
             </Col>
             <Col span={16}>
                 <Field
-                    label="Выберите первоначальный меню"
-                    placeholder="Выберите первоначальный меню"
-                    name="menu_item_parent_id"
+                    name="category_id"
+                    url="/category"
+                    label="Выберите категория"
+                    placeholder="Выберите категория"
                     component={Fields.AsyncSelectField}
-                    url="/menu-items"
-                    optionLabel={(item: any) => get(item, "title.ru")}
-                    optionValue={(item: any) => get(item, "menu_item_id")}
+                    optionLabel={(item: any) => get(item, "name.ru")}
+                    optionValue={(item: any) => get(item, "id")}
                     loadOptionsParams={(text: string) => ({
                         filter: {
-                            menu_id: 2,
                             name: text,
                         },
                     })}
@@ -130,6 +132,14 @@ export default function FormFields({
                     label="Опубликовано в"
                     placeholder="Опубликовано в"
                     component={Fields.DatePickerFields}
+                />
+            </Col>
+            <Col span={24}>
+                <Field
+                    label="Другие изображения"
+                    name="files"
+                    component={Fields.FileUpload}
+                    multiple={true}
                 />
             </Col>
 
