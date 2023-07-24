@@ -1,0 +1,112 @@
+.field {
+    &_upload,
+    &_input,
+    &_select,
+    &_checkbox,
+    &_phone-number,
+    &_time-picker {
+        .ant-upload-wrapper.ant-upload-picture-card-wrapper {
+            display: block;
+            position: relative;
+            top: 10px !important;
+        }
+        label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3659;
+        }
+        input {
+            width: 100%;
+            border-radius: 10px !important;
+        }
+        .number-input {
+            border: 1px solid #d9d9d9;
+        }
+        .ant-picker,
+        .ant-space-compact,
+        .ant-select,
+        .ant-upload-list-item-container,
+        .ant-upload-select {
+            width: 100% !important;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            border-radius: 10px;
+            &-selector {
+                padding: 10px !important;
+                height: 56px !important;
+                border-radius: 10px;
+            }
+            .ant-select-selection-search {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .ant-space-compact input,
+        .ant-picker {
+            padding: 16px;
+        }
+
+        &--wrapper {
+            position: relative;
+            margin-top: 10px;
+            &.number {
+                label {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: #2c3659;
+                }
+                input.ant-input {
+                    border-radius: 10px;
+                    margin-top: 10px;
+                    padding: 16px;
+                    height: 56px !important;
+                    margin-bottom: 0;
+                    display: block;
+                    width: 100%;
+                    border: 1px solid #d9d9d9;
+                    &::placeholder {
+                        color: #d9d9d9;
+                    }
+                }
+            }
+            input {
+                padding: 16px;
+                margin-bottom: 5px;
+            }
+            .password_view {
+                cursor: pointer;
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 18px;
+            }
+        }
+
+        .ant-checkbox-group {
+            display: flex;
+            align-items: center;
+            padding-bottom: 20px;
+            label.ant-checkbox-wrapper {
+                width: 32%;
+                margin-top: 20px;
+                font-size: 16px;
+                .ant-checkbox-inner {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+
+        &.error {
+            .ant-select-selector,
+            input {
+                border-color: red;
+            }
+        }
+    }
+    &_error {
+        color: red;
+    }
+}

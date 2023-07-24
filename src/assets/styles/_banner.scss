@@ -1,0 +1,9 @@
+.banner_form {
+    .field_upload {
+        .ant-upload-list-item-container,
+        .ant-upload-list-item-done,
+        .ant-upload-select {
+            min-height: 300px;
+        }
+    }
+}

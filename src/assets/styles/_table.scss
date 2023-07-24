@@ -1,0 +1,158 @@
+.table {
+    position: relative;
+    &_header {
+        display: flex;
+        align-items: center;
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-right: auto;
+            margin-top: 0;
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+        .add {
+            margin-left: 10px;
+        }
+    }
+    .total_count {
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+        margin: 0;
+        z-index: 1;
+        color: #2c3659;
+        font-size: 18px;
+        span {
+            margin: 0 5px;
+            color: #a7aec1;
+        }
+    }
+    .ant-table {
+        max-height: 70vh;
+        min-height: 70vh;
+        padding-top: 20px;
+        overflow: auto;
+        background-color: transparent !important;
+        margin-top: 10px;
+        table {
+            border-collapse: collapse !important;
+            overflow: auto;
+            thead,
+            tbody {
+                width: 100%;
+                border-radius: 12px;
+                overflow: hidden;
+                font-size: 14px;
+            }
+            thead {
+                position: sticky;
+                top: 0;
+                z-index: 2;
+                transform: translateY(-20px);
+
+                tr th,
+                tr td {
+                    position: relative;
+                    min-width: 150px;
+                    background-color: #fff !important;
+                    white-space: nowrap;
+                    font-size: 14px;
+                    color: #a7aec1;
+                    font-weight: normal;
+                    &:first-child {
+                        min-width: 50px !important;
+                        border-bottom-left-radius: 12px;
+                    }
+                    // &:nth-child(2) {
+                    //     min-width: 50px !important;
+                    //     border-bottom-left-radius: 12px;
+                    // }
+                    &:last-child {
+                        border-bottom-right-radius: 12px;
+                    }
+                }
+            }
+            tbody {
+                margin-top: 10px;
+                flex-direction: column;
+                tr:first-child td {
+                    &:first-child {
+                        border-top-left-radius: 12px;
+                    }
+                    &:last-child {
+                        border-top-right-radius: 12px;
+                    }
+                }
+                tr:last-child {
+                    height: 100%;
+                }
+            }
+            tr {
+                width: 100%;
+                background-color: #fff;
+                cursor: pointer;
+                th {
+                    background-color: #fff;
+                    &:first-child {
+                        padding-left: 24px;
+                    }
+                }
+                td {
+                    white-space: nowrap;
+                    max-width: 350px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    &:first-child {
+                        padding-left: 24px;
+                    }
+                    &:last-child {
+                        min-width: 50px !important;
+                        max-width: 50px !important;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+        .ant-empty-normal {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    ul.ant-pagination {
+        padding: 16px;
+        margin: 0 auto;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        background-color: #fff;
+        box-shadow: 0 -10px 16px rgba($color: #000000, $alpha: 0.1);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        z-index: 20 !important;
+        display: flex;
+        align-items: center;
+        .ant-pagination-prev {
+            margin-left: auto;
+        }
+        .ant-pagination-next {
+            margin-right: auto;
+        }
+        .ant-pagination-item {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &-active {
+                background-color: $primary-color;
+                a {
+                    color: #fff;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

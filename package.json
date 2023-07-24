@@ -1,0 +1,58 @@
+{
+    "name": "sample-admin",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@tanstack/react-query": "^4.29.19",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "@types/jest": "^27.5.2",
+        "@types/node": "^16.18.36",
+        "@types/react": "^18.2.13",
+        "@types/react-dom": "^18.2.6",
+        "antd": "^5.6.4",
+        "axios": "^1.4.0",
+        "dayjs": "^1.11.9",
+        "formik": "^2.4.2",
+        "lodash": "^4.17.21",
+        "object-to-formdata": "^4.5.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-number-format": "^5.2.2",
+        "react-redux": "^8.1.1",
+        "react-router-dom": "^6.14.1",
+        "react-scripts": "5.0.1",
+        "redux-persist": "^6.0.0",
+        "sass": "^1.63.6",
+        "typescript": "^4.9.5",
+        "web-vitals": "^2.1.4",
+        "yup": "^1.2.0"
+    },
+    "scripts": {
+        "start": "cross-env NODE_ENV=development react-scripts start",
+        "build": "cross-env NODE_ENV=production react-scripts build",
+        "build-development": "cp ./.env.development .env && cross-env NODE_ENV=development CI=false react-scripts build",
+        "build-production": "cp ./.env.production .env && cross-env NODE_ENV=production CI=false react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
