@@ -11,6 +11,7 @@ const Banner = lazy(() => import("pages/Banner"));
 const Category = lazy(() => import("pages/Category"));
 const Post = lazy(() => import("pages/Post"));
 const Tariff = lazy(() => import("pages/Tariff"));
+const Pages =  lazy(() => import("pages/Pages"));
 const Orders = lazy(() => import("pages/Orders"));
 const Login = lazy(() => import("pages/Login"));
 
@@ -56,6 +57,12 @@ const allRoute = [
     {
         path: "/tariff",
         element: <Tariff />,
+        roles: [roles.ROLE_SUPER_ADMIN],
+        auth: false,
+    },
+    {
+        path: "/pages",
+        element: <Pages />,
         roles: [roles.ROLE_SUPER_ADMIN],
         auth: false,
     },

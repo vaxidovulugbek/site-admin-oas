@@ -5,6 +5,7 @@ import {
     AppstoreTwoTone,
     CalendarTwoTone,
     PlusCircleTwoTone,
+    CopyTwoTone,
 } from "@ant-design/icons";
 import constants from "helpers/constants";
 
@@ -43,6 +44,12 @@ const menus = [
         key: "/tariff",
         label: "Тарифы",
         icon: <PoundCircleTwoTone />,
+        roles: [constants.roles.ROLE_SUPER_ADMIN],
+    },
+    {
+        key: "/pages",
+        label: "Страницы",
+        icon: <CopyTwoTone />,
         roles: [constants.roles.ROLE_SUPER_ADMIN],
     },
 ];
