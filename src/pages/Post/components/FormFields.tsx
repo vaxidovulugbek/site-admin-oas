@@ -10,13 +10,30 @@ export default function FormFields({
 }) {
     return (
         <Row gutter={[16, 16]}>
-            {/* <Col span={8}>
+            <Col span={8}>
                 <Field
                     label="Логотип"
-                    name="icon_id"
+                    name="photo"
                     component={Fields.FileUpload}
                 />
-            </Col> */}
+            </Col>
+            <Col span={16}>
+                <Field
+                    label="Выберите первоначальный меню"
+                    placeholder="Выберите первоначальный меню"
+                    name="menu_item_parent_id"
+                    component={Fields.AsyncSelectField}
+                    url="/menu-items"
+                    optionLabel={(item: any) => get(item, "title.ru")}
+                    optionValue={(item: any) => get(item, "menu_item_id")}
+                    loadOptionsParams={(text: string) => ({
+                        filter: {
+                            menu_id: 2,
+                            name: text,
+                        },
+                    })}
+                />
+            </Col>
 
             <Col span={8}>
                 <Field
@@ -42,37 +59,77 @@ export default function FormFields({
                     component={Fields.Input}
                 />
             </Col>
-            <Col span={12}>
+            <Col span={8}>
                 <Field
-                    label="Выберите первоначальный меню"
-                    placeholder="Выберите первоначальный меню"
-                    name="menu_item_parent_id"
-                    component={Fields.AsyncSelectField}
-                    url="/menu-items"
-                    optionLabel={(item: any) => get(item, "title.ru")}
-                    optionValue={(item: any) => get(item, "menu_item_id")}
-                    loadOptionsParams={(text: string) => ({
-                        filter: {
-                            menu_id: 2,
-                            name: text,
-                        },
-                    })}
+                    label="Описание (uz)"
+                    placeholder="Описание (uz)"
+                    name="description[uz]"
+                    component={Fields.Input}
                 />
             </Col>
-            <Col span={6}>
+            <Col span={8}>
                 <Field
-                    name="url"
+                    label="Описание (ru)"
+                    placeholder="Описание (ru)"
+                    name="description[ru]"
+                    component={Fields.Input}
+                />
+            </Col>
+            <Col span={8}>
+                <Field
+                    label="Описание (en)"
+                    placeholder="Описание (en)"
+                    name="description[en]"
+                    component={Fields.Input}
+                />
+            </Col>
+            <Col span={8}>
+                <Field
+                    label="Анонс (uz)"
+                    placeholder="Анонс (uz)"
+                    name="anons[uz]"
+                    component={Fields.Input}
+                />
+            </Col>
+            <Col span={8}>
+                <Field
+                    label="Анонс (ru)"
+                    placeholder="Анонс (ru)"
+                    name="anons[ru]"
+                    component={Fields.Input}
+                />
+            </Col>
+            <Col span={8}>
+                <Field
+                    label="Анонс (en)"
+                    placeholder="Анонс (en)"
+                    name="anons[en]"
+                    component={Fields.Input}
+                />
+            </Col>
+
+            <Col span={8}>
+                <Field
+                    name="slug"
                     label="URL"
                     placeholder="URL"
                     component={Fields.Input}
                 />
             </Col>
-            <Col span={6}>
+            <Col span={8}>
                 <Field
-                    name="sort"
-                    label="Сортировать"
-                    placeholder="Сортировать"
+                    name="top"
+                    label="Топ"
+                    placeholder="Топ"
                     component={Fields.Input}
+                />
+            </Col>
+            <Col span={8}>
+                <Field
+                    name="published_at"
+                    label="Опубликовано в"
+                    placeholder="Опубликовано в"
+                    component={Fields.DatePickerFields}
                 />
             </Col>
 
