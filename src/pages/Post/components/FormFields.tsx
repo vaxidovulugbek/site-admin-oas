@@ -1,16 +1,15 @@
 import { Button, Col, Row } from "antd";
 import { Fields } from "components";
 import { Field } from "formik";
+import time from "helpers/time";
 import { get } from "lodash";
 
 export default function FormFields({
     isUpdate = false,
     setModal,
     isSubmitting,
-    values,
+    setFieldValue,
 }) {
-    console.log(values);
-
     return (
         <Row gutter={[16, 16]}>
             <Col span={8}>
@@ -20,7 +19,8 @@ export default function FormFields({
                     component={Fields.FileUpload}
                 />
             </Col>
-            <Col span={16}>
+            <Col></Col>
+            <Col span={24}>
                 <Field
                     name="category_id"
                     url="/category"
@@ -132,6 +132,10 @@ export default function FormFields({
                     label="Опубликовано в"
                     placeholder="Опубликовано в"
                     component={Fields.DatePickerFields}
+                    format={"DD.MM.YYYY / HH:mm"}
+                    onChange={(e) =>
+                        setFieldValue("published_at", time.toTimestamp(e))
+                    }
                 />
             </Col>
             <Col span={24}>

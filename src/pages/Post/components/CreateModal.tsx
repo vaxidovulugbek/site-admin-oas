@@ -26,6 +26,16 @@ export default function CreateModal({ modal, setModal }) {
                 }}
                 fields={[
                     {
+                        name: "photo",
+                        validationType: "array",
+                        validations: [{ type: "required" }],
+                        onSubmitValue: (value) => {
+                            return isArray(value) && value.length
+                                ? value[0].id.toString()
+                                : null;
+                        },
+                    },
+                    {
                         name: "title",
                         validationType: "object",
                         value: {
@@ -85,6 +95,12 @@ export default function CreateModal({ modal, setModal }) {
                         onSubmitValue: (value) => value || null,
                     },
                     {
+                        name: "type",
+                        validationType: "string",
+                        validations: [{ type: "required" }],
+                        onSubmitValue: (value) => value || null,
+                    },
+                    {
                         name: "slug",
                         validationType: "string",
                         validations: [{ type: "required" }],
@@ -101,7 +117,10 @@ export default function CreateModal({ modal, setModal }) {
                         validationType: "array",
                         onSubmitValue: (value) => {
                             return isArray(value) && value.length
-                                ? value[0].id
+                                ? value.map((v, i) => ({
+                                      file_id: v.id,
+                                      sort: i,
+                                  }))
                                 : null;
                         },
                     },

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TableView } from "components";
+import { ImageRender, TableView } from "components";
 import { get } from "lodash";
 import CreateModal from "./components/CreateModal";
 import UpdateModal from "./components/UpdateModal";
@@ -21,9 +21,8 @@ export default function Post() {
                 url="/post"
                 title={"Посты"}
                 urlSearchParams={{
-                    include: "file",
+                    include: "file,files,category",
                 }}
-                dataKey={"menu_item_id"}
                 isDelete={true}
                 refetch={refetch}
                 onEdit={(row: any) => setModal({ open: "update", data: row })}
@@ -38,9 +37,34 @@ export default function Post() {
                         render: (v) => v,
                     },
                     {
-                        title: "Названия",
+                        title: "Изображение",
+                        dataIndex: "file",
+                        render: (v) => <ImageRender image={v} />,
+                    },
+                    {
+                        title: "Названия (uz)",
+                        dataIndex: "title",
+                        render: (v) => get(v, "uz"),
+                    },
+                    {
+                        title: "Названия (ru)",
                         dataIndex: "title",
                         render: (v) => get(v, "ru"),
+                    },
+                    {
+                        title: "Названия (en)",
+                        dataIndex: "title",
+                        render: (v) => get(v, "en"),
+                    },
+                    {
+                        title: "URL",
+                        dataIndex: "slug",
+                        render: (v) => v,
+                    },
+                    {
+                        title: "Просмотрено",
+                        dataIndex: "viewed",
+                        render: (v) => v,
                     },
                 ]}
             />

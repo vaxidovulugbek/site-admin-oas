@@ -2,7 +2,7 @@ import { DrawerModal } from "components";
 import Containers from "containers";
 import FormFields from "./FormFields";
 import { message } from "antd";
-// import { isArray } from "lodash";
+import { isArray } from "lodash";
 
 export default function UpdateModal({ modal, setModal }) {
     const { open, data } = modal;
@@ -26,58 +26,99 @@ export default function UpdateModal({ modal, setModal }) {
                 }}
                 fields={[
                     {
-                        name: "menu_id",
-                        value: 2,
+                        name: "photo",
+                        validationType: "array",
+                        value: [data.file],
+                        validations: [{ type: "required" }],
+                        onSubmitValue: (value) => {
+                            return isArray(value) && value.length
+                                ? value[0].id.toString()
+                                : null;
+                        },
                     },
                     {
                         name: "title",
                         validationType: "object",
                         value: data.title,
                         validations: [{ type: "required" }],
-                        lazy: (_: any, yup: any) => {
-                            return yup.object().shape({
+                        lazy: (_, yup) =>
+                            yup.object().shape({
                                 uz: yup.string().required("Обязательное поле"),
                                 ru: yup.string().required("Обязательное поле"),
                                 en: yup.string().required("Обязательное поле"),
-                            });
-                        },
-                        onSubmitValue: (values) => ({
-                            uz: values.uz,
-                            ru: values.ru,
-                            en: values.en,
-                        }),
+                            }),
                     },
                     {
-                        name: "menu_item_parent_id",
-                        value: data.menuItemParent,
+                        name: "description",
                         validationType: "object",
+                        value: data.description,
+                        validations: [{ type: "required" }],
+                        lazy: (_, yup) =>
+                            yup.object().shape({
+                                uz: yup.string().required("Обязательное поле"),
+                                ru: yup.string().required("Обязательное поле"),
+                                en: yup.string().required("Обязательное поле"),
+                            }),
+                    },
+                    {
+                        name: "anons",
+                        validationType: "object",
+                        value: data.anons,
+                        validations: [{ type: "required" }],
+                        lazy: (_, yup) =>
+                            yup.object().shape({
+                                uz: yup.string().required("Обязательное поле"),
+                                ru: yup.string().required("Обязательное поле"),
+                                en: yup.string().required("Обязательное поле"),
+                            }),
+                    },
+                    {
+                        name: "category_id",
+                        validationType: "object",
+                        value: data.category,
                         onSubmitValue: (value) => value.value || null,
                     },
                     {
-                        name: "sort",
-                        value: data.sort,
+                        name: "top",
+                        validationType: "string",
+                        value: data.top,
+                        validations: [{ type: "required" }],
+                        onSubmitValue: (value) => value || null,
+                    },
+                    {
+                        name: "type",
+                        value: data.type || 1,
                         validationType: "string",
                         validations: [{ type: "required" }],
                         onSubmitValue: (value) => value || null,
                     },
                     {
-                        name: "url",
-                        value: data.url,
+                        name: "slug",
+                        value: data.slug,
                         validationType: "string",
                         validations: [{ type: "required" }],
                         onSubmitValue: (value) => value || null,
                     },
-                    // {
-                    //     name: "icon_id",
-                    //     value: data.icon ? [data.icon] : [],
-                    //     validationType: "array",
-                    //     validations: [{ type: "required" }],
-                    //     onSubmitValue: (value) => {
-                    //         return isArray(value) && value.length
-                    //             ? value[0].id
-                    //             : null;
-                    //     },
-                    // },
+                    {
+                        name: "published_at",
+                        value: data.published_at,
+                        validationType: "string",
+                        validations: [{ type: "required" }],
+                        onSubmitValue: (value) => value || null,
+                    },
+                    {
+                        name: "files",
+                        validationType: "array",
+                        value: data.files,
+                        onSubmitValue: (value) => {
+                            return isArray(value) && value.length
+                                ? value.map((v, i) => ({
+                                      file_id: v.id,
+                                      sort: i,
+                                  }))
+                                : null;
+                        },
+                    },
                 ]}
             >
                 {(props) => (

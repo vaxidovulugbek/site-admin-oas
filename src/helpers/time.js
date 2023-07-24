@@ -42,7 +42,7 @@ const time = {
         return dayjs(date).add(value, unit).toDate();
     },
 
-    toTimestamp: (date) => dayjs(date).utc(true).unix(),
+    toTimestamp: (date) => dayjs(date).unix(),
 
     toDate: (timestamp) =>
         timestamp

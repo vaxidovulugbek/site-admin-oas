@@ -1,5 +1,6 @@
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
+import time from "helpers/time";
 import { get } from "lodash";
 
 export default function DatePickerField({
@@ -14,7 +15,7 @@ export default function DatePickerField({
         get(form.touched, field.name) && get(form.errors, field.name);
 
     return (
-        <div className="field_time-picker">
+        <div className={"field_time-picker " + (hasError ? "error" : "")}>
             {label ? <label>{label}</label> : null}
 
             <DatePicker
@@ -24,7 +25,12 @@ export default function DatePickerField({
                     onChange && onChange(e);
                 }}
                 defaultValue={
-                    field.value ? dayjs(field.value, format) : undefined
+                    field.value
+                        ? dayjs(
+                              time.formatTimestamp(field.value, format),
+                              format
+                          )
+                        : undefined
                 }
                 format={format}
                 {...props}
