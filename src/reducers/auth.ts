@@ -13,7 +13,7 @@ const initialState = {
         phone: null,
         status: 10,
         role: 10,
-        token: "9Lr_BCpJb2SbxavS0cpJFkxFyHiI8jIGRXoSIImj1wr4ca9z7QfpY95GJPngi8iW",
+        token: "KgtVzqFcyAhitwSwg_uQiJV9qwm4Qv7zVP2E5BroON_t1IbFfcVWC36RmkuX5NGC",
     },
 };
 
